@@ -2,6 +2,8 @@
 using Domain.Repositories;
 using Shared;
 using Domain.Exceptions;
+using Mapster;
+using Domain.Entities;
 
 namespace Services
 {
@@ -40,7 +42,7 @@ namespace Services
         {
             var owners = await _repositoryManager.OwnerRepository.GetAllAsync(cancellationToken);
             var ownersDtos = owners.Adapt<IEnumerable<OwnerDto>>();
-            return ownersDto;
+            return ownersDtos;
         }
 
         public async Task<OwnerDto> GetByIdAsync(Guid ownerId, CancellationToken cancellationToken = default)

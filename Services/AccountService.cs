@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Exceptions;
 using Domain.Repositories;
+using Mapster;
 using Services.Abstractions;
 using Shared;
 
@@ -27,6 +28,8 @@ namespace Services
             _repositoryManager.AccountRepository.Insert(account);
             
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
+
+            return account.Adapt<AccountDto>();
         }
 
         public async Task DeleteAsync(Guid ownerId, Guid accountId, CancellationToken cancellationToken = default)
