@@ -18,6 +18,7 @@ builder.Services.AddControllers()
 // --> Registering the services Manager and Repository Manager
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 builder.Services.AddDbContextPool<RepositoryDbContext>(opt =>
 {
