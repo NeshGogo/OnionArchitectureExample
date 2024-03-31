@@ -28,7 +28,7 @@ namespace Services
         {
             var owner = await _repositoryManager.OwnerRepository.GetByIdAsync(ownerId, cancellationToken);
             
-            if (owner != null)
+            if (owner is null)
             {
                 throw new OwnerNotFoundException(ownerId);
             }
@@ -49,7 +49,7 @@ namespace Services
         {
             var owner = await _repositoryManager.OwnerRepository.GetByIdAsync(ownerId, cancellationToken);
             
-            if(owner == null)
+            if(owner is null)
             {
                 throw new OwnerNotFoundException(ownerId);
             }
@@ -62,7 +62,7 @@ namespace Services
         {
             var owner = await _repositoryManager.OwnerRepository.GetByIdAsync(ownerId, cancellationToken);
 
-            if (owner == null)
+            if (owner is null)
             {
                 throw new OwnerNotFoundException(ownerId);
             }

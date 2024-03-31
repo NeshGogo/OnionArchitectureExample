@@ -49,4 +49,6 @@ app.UseAuthorization();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
 
+// --> Run migrations
+Persistence.PreDb.PrePoupulation(app.Services);
 app.Run();
