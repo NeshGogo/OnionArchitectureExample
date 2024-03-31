@@ -1,6 +1,7 @@
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using OnionArchitectureExample.Middlewares;
 using Persistence;
 using Persistence.Repositories;
 using Services;
@@ -44,6 +45,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
 
 app.Run();
